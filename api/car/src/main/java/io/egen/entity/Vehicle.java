@@ -9,10 +9,10 @@ import java.util.Date;
 
 @Entity
 @NamedQueries({
-        @NamedQuery(name = "vehicles.findAll",
-                query = "SELECT veh FROM vehicles veh")
+        @NamedQuery(name = "vehicle.findAll",
+                query = "SELECT veh FROM Vehicle veh")
 })
-public class vehicles {
+public class Vehicle {
 
     @Id
     private String vin;

@@ -9,7 +9,7 @@ import java.util.UUID;
 import java.lang.String;
 
 @Entity
-public class tire {
+public class Tire {
 
     @Id
     private String id;
@@ -17,7 +17,7 @@ public class tire {
     private int frontRight;
     private int rearLeft;
     private int rearRight;
-    public tire()
+    public Tire()
     {
         this.id= UUID.randomUUID().toString();
     }

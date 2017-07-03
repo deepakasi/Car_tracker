@@ -1,9 +1,8 @@
 package io.egen.service;
 
-import io.egen.entity.readings;
-import io.egen.entity.vehicles;
+import io.egen.entity.Reading;
+import io.egen.entity.Vehicle;
 import io.egen.exception.BadRequestException;
-import io.egen.exception.ResourceNotFoundException;
 import io.egen.repository.vehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,14 +21,14 @@ public class vehicleServiceImpl implements vehicleService {
     vehicleRepository repository;
 
     @Transactional(readOnly = true)
-    public List<vehicles> findAll() {
+    public List<Vehicle> findAll() {
         return repository.findAll();
     }
 
 
     @Transactional
-    public readings create(readings emp) {
-        readings existing = repository.findReadVin(emp.getVin());
+    public Reading create(Reading emp) {
+        Reading existing = repository.findReadVin(emp.getVin());
         if (existing != null) {
             throw new BadRequestException("Vehicle with vin " + emp.getVin() + " already exists.");
         }
@@ -37,9 +36,9 @@ public class vehicleServiceImpl implements vehicleService {
     }
 
     @Transactional
-    public List<vehicles> update(List<vehicles> vehicle) {
-        for (vehicles vh : vehicle) {
-            vehicles existing = repository.findVehVin(vh.getVin());
+    public List<Vehicle> update(List<Vehicle> vehicle) {
+        for (Vehicle vh : vehicle) {
+            Vehicle existing = repository.findVehVin(vh.getVin());
             if (existing == null) {
                repository.create(vh);
             } else

@@ -1,7 +1,7 @@
 package io.egen.controller;
 
-import io.egen.entity.readings;
-import io.egen.entity.vehicles;
+import io.egen.entity.Reading;
+import io.egen.entity.Vehicle;
 import io.egen.service.vehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,19 +21,19 @@ public class vehicleController {
     vehicleService service;
 
     @RequestMapping(method = RequestMethod.GET, value="vehicle", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<vehicles> findAll() {
+    public List<Vehicle> findAll() {
         return service.findAll();
     }
 
 
     @RequestMapping(method = RequestMethod.POST, value="readings")
-    public readings create(@RequestBody readings read)
+    public Reading create(@RequestBody Reading read)
     {
          return service.create(read);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "vehicles")
-    public List<vehicles> update(@RequestBody List<vehicles> vehicle) {
+    public List<Vehicle> update(@RequestBody List<Vehicle> vehicle) {
           return service.update(vehicle);
     }
 
