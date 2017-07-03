@@ -1,7 +1,6 @@
 package io.egen.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 
 /**
@@ -11,10 +10,10 @@ import java.util.List;
 @Entity
 @NamedQueries({
         @NamedQuery(name = "readings.findAll",
-                query = "SELECT red FROM readings red")
+                query = "SELECT red FROM Reading red")
 
 })
-public class readings {
+public class Reading {
 
     @Id
     private String vin;
@@ -30,7 +29,7 @@ public class readings {
     private int engineRpm;
 
     @OneToOne
-    private tire tires;
+    private Tire tires;
 
     public String getVin() {
         return vin;
@@ -120,12 +119,12 @@ public class readings {
         this.engineRpm = engineRpm;
     }
 
-    public tire getTires() {
+    public Tire getTires() {
         return tires;
     }
 
     @Transient
-    public void setTires(tire tires) {
+    public void setTires(Tire tires) {
         this.tires = tires;
     }
 

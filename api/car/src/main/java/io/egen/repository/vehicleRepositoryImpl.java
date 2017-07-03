@@ -1,7 +1,7 @@
 package io.egen.repository;
 
-import io.egen.entity.readings;
-import io.egen.entity.vehicles;
+import io.egen.entity.Reading;
+import io.egen.entity.Vehicle;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -19,34 +19,34 @@ public class vehicleRepositoryImpl implements vehicleRepository{
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<vehicles> findAll() {
-        TypedQuery<vehicles> query = entityManager.createNamedQuery("vehicles.findAll",
-                vehicles.class);
+    public List<Vehicle> findAll() {
+        TypedQuery<Vehicle> query = entityManager.createNamedQuery("Vehicle.findAll",
+                Vehicle.class);
         return query.getResultList();
     }
 
-    public readings findReadVin(String read) {
+    public Reading findReadVin(String read) {
 
-       return entityManager.find(readings.class,read);
+       return entityManager.find(Reading.class,read);
     }
 
-    public vehicles findVehVin(String vin) {
-    return entityManager.find(vehicles.class,vin);
+    public Vehicle findVehVin(String vin) {
+    return entityManager.find(Vehicle.class,vin);
 
     }
 
-    public vehicles create(vehicles vehicle) {
+    public Vehicle create(Vehicle vehicle) {
        entityManager.persist(vehicle);
        return vehicle;
     }
 
-    public readings create(readings read) {
+    public Reading create(Reading read) {
         entityManager.persist(read.getTires());
        entityManager.persist(read);
        return  read;
     }
 
-    public vehicles update(vehicles emp) {
+    public Vehicle update(Vehicle emp) {
        return  entityManager.merge(emp);
     }
 
